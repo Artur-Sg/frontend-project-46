@@ -1,0 +1,38 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "[![Actions Status](https://github.com/Artur-Sg/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Artur-Sg/frontend-project-46/actions)",
+  "main": "gendiff.js",
+  "type": "module",
+  "scripts": {
+    "start": "make start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Artur-Sg/frontend-project-46.git"
+  },
+  "bin": {
+    "gendiff": "gendiff.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Artur-Sg/frontend-project-46/issues"
+  },
+  "homepage": "https://github.com/Artur-Sg/frontend-project-46#readme",
+  "dependencies": {
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@eslint/create-config": "^1.0.0",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.10.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1"
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix"
+  }
+}

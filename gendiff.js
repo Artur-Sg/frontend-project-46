@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
+import { readAndParseFile } from './src/utils.js';
 
 const program = new Command();
 
@@ -10,8 +11,11 @@ program
   .version('1.0.0')
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format [type]', 'output format')
-  .action((f1, f2, { format }) => {
-    console.log('f1', f1, 'f2', f2, 'format', format);
+  .action((filepath1, filepath2) => {
+    const json1 = readAndParseFile(filepath1);
+    const json2 = readAndParseFile(filepath2);
+
+    console.log(json1, json2);
   });
 
 program.parse();

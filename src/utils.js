@@ -19,3 +19,34 @@ export const readAndParseFile = (filepath) => {
 
   return parseFile(filepath, data);
 };
+
+export const getLine = (file, key) => {
+  return `${key}: ${file[key]}\n`;
+};
+
+export const compareFiles = (file1, file2) => {
+  const keys = new Set([...Object.keys(file1), ...Object.keys(file2)].sort());
+  let res = [];
+
+  for (const key of keys) {
+    const value1 = file1[key];
+    const value2 = file2[key];
+
+    if (value1 === value2) {
+      res.push(`    ${getLine(file1, key)}`);
+    } else if (value1 === undefined) {
+      res.push(`  + ${getLine(file2, key)}`);
+    } else if (value2 === undefined) {
+      res.push(`  - ${getLine(file1, key)}`);
+    } else {
+      res.push(`  - ${getLine(file1, key)}`);
+      res.push(`  + ${getLine(file2, key)}`);
+    }
+  }
+
+  res = `{\n${res.join('')}}`;
+
+  console.log(res);
+
+  return res;
+};

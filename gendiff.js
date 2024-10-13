@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { readAndParseFile } from './src/utils.js';
+import { readAndParseFile, compareFiles } from './src/utils.js';
 
 const program = new Command();
 
@@ -14,8 +14,9 @@ program
   .action((filepath1, filepath2) => {
     const json1 = readAndParseFile(filepath1);
     const json2 = readAndParseFile(filepath2);
+    const result = compareFiles(json1, json2);
 
-    console.log(json1, json2);
+    return result;
   });
 
 program.parse();

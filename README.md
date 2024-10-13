@@ -3,4 +3,9 @@
 
 Usage example:
 
+```console
 gendiff '../frontend-project-46/__fixtues__/file1.json' '__fixtures__/file2.json'
+```
+
+### Asciinema demo:
+![Demo](./assets/demo.gif)

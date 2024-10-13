@@ -1,6 +1,11 @@
+import { fileURLToPath } from 'url';
 import fs from 'fs';
+import path from 'path';
 
 import { compareFiles } from '../src/utils.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 test('Test compare util', () => {
   const commonPath = `${__dirname}/../__fixtures__`;

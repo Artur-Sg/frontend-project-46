@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "make start",
-    "test": "jest"
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "test-coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -23,19 +25,17 @@
   "homepage": "https://github.com/Artur-Sg/frontend-project-46#readme",
   "dependencies": {
     "commander": "^12.1.0",
-    "lodash": "^4.17.21",
-    "ts-jest": "^29.2.5"
+    "globals": "^15.11.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.8",
-    "@babel/preset-env": "^7.25.8",
     "@eslint/create-config": "^1.0.0",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.10.0",
     "@jest/globals": "^29.7.0",
-    "babel-jest": "^29.7.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.31.0",
     "jest": "^29.7.0"
   },
   "lint-staged": {

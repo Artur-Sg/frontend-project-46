@@ -5,30 +5,28 @@ export const isAbsolutePath = (filePath) => path.isAbsolute(filePath);
 
 export const readFile = (filepath) => readFileSync(filepath, 'utf-8');
 
-export const parseFile = (filepath, file) => {
+export const parseFile = (filepath) => {
   const type = path.extname(filepath).slice(1);
   const formatMapper = {
     json: (file) => JSON.parse(file),
   };
 
-  return formatMapper[type](file);
+  return formatMapper[type];
 };
 
 export const readAndParseFile = (filepath) => {
   const data = readFile(filepath);
 
-  return parseFile(filepath, data);
+  return parseFile(filepath)(data);
 };
 
-export const getLine = (file, key) => {
-  return `${key}: ${file[key]}\n`;
-};
+export const getLine = (file, key) => `${key}: ${file[key]}\n`;
 
 export const compareFiles = (file1, file2) => {
   const keys = new Set([...Object.keys(file1), ...Object.keys(file2)].sort());
   let res = [];
 
-  for (const key of keys) {
+  keys.forEach((key) => {
     const value1 = file1[key];
     const value2 = file2[key];
 
@@ -42,7 +40,7 @@ export const compareFiles = (file1, file2) => {
       res.push(`  - ${getLine(file1, key)}`);
       res.push(`  + ${getLine(file2, key)}`);
     }
-  }
+  });
 
   res = `{\n${res.join('')}}`;
 

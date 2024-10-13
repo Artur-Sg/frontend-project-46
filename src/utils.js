@@ -1,23 +1,25 @@
 import { readFileSync } from 'fs';
+import yaml from 'js-yaml';
 import path from 'path';
-
-export const isAbsolutePath = (filePath) => path.isAbsolute(filePath);
 
 export const readFile = (filepath) => readFileSync(filepath, 'utf-8');
 
 export const parseFile = (filepath) => {
-  const type = path.extname(filepath).slice(1);
-  const formatMapper = {
-    json: (file) => JSON.parse(file),
+  const extension = path.extname(filepath).slice(1).toLowerCase();
+  const parsers = {
+    json: JSON.parse,
+    yml: yaml.load,
+    yaml: yaml.load,
   };
 
-  return formatMapper[type];
+  return parsers[extension];
 };
 
 export const readAndParseFile = (filepath) => {
   const data = readFile(filepath);
+  const parse = parseFile(filepath);
 
-  return parseFile(filepath)(data);
+  return parse(data);
 };
 
 export const getLine = (file, key) => `${key}: ${file[key]}\n`;
@@ -47,4 +49,12 @@ export const compareFiles = (file1, file2) => {
   console.log(res);
 
   return res;
+};
+
+export const readAndCompareFiles = (filepath1, filepath2) => {
+  const file1 = readAndParseFile(filepath1);
+  const file2 = readAndParseFile(filepath2);
+  const result = compareFiles(file1, file2);
+
+  return result;
 };

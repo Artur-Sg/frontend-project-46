@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { readAndCompareFiles } from './src/utils.js';
+import readAndCompareFiles from './src/utils.js';
 
 const program = new Command();
 

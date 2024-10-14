@@ -14,6 +14,8 @@ program
   .action((filepath1, filepath2) => {
     const result = readAndCompareFiles(filepath1, filepath2);
 
+    console.log(result);
+
     return result;
   });
 
